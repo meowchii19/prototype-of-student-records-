@@ -4,11 +4,9 @@
     padding: 0;
 }
 
-
 body{
     font-family: 'Poppins', sans-serif;
 }
-
 
 .pop-up{
     position: fixed;
@@ -78,7 +76,6 @@ body{
     min-width: 50px;
     text-align: center;
     opacity: 0.5;
-
 }
   
 .input-field {
@@ -101,7 +98,6 @@ body{
     outline: none;
 }
 
-
 .pop-up-login{
     width: 90%;
     margin:  2rem auto 2rem auto;
@@ -116,7 +112,6 @@ body{
     color: white;
     font-weight: bold;
     padding: 10px;
-
 }
 
 .login-button:hover{
@@ -137,6 +132,60 @@ body{
     font-weight: 3400;
 }
 
+.nav{
+    font-size: 2rem;
+    margin-left: 70%;
+}
+
+.nav ul{
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    justify-content: space-evenly;
+}
+.nav li a{
+    color: inherit;
+}
+
+.nav ul li:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.nav li button{
+    font-size: 2rem;
+    background-color: inherit;
+    border: none;
+    color: #e36236;
+}
+
+.nav li button:hover{
+    cursor: pointer;
+    color: #f9b457 ;
+    border: none;
+    outline: none;
+}
+
+.addStudent::before{
+    border-radius: 10px;
+    background-color: #ef8d50;
+    color: white;
+    content: attr(data-title);
+    display: none;
+    font-size: 1rem;
+    padding: 10px;
+    position: absolute;
+    left: 58%;
+    z-index: 1;
+}
+.addStudent:hover::before{
+    display: block;
+}
+
+.nav li button:focus{
+    border: none;
+    outline: none;
+}
 .home-body{
     text-align: center;
     background-color: #fbe4b8;
@@ -213,10 +262,6 @@ th,td{
 }
 table{
     margin: auto;
-}
-
-td{
-    padding: 10px;
 }
 
 .td-buttons{

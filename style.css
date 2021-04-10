@@ -14,7 +14,7 @@ body{
     position: fixed;
     top: 53%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(0);
     transition: 200ms ease-in-out;
     background-color: #91a3bf;
     min-width: 500px;
@@ -128,3 +128,128 @@ body{
     outline: none;
 }
 
+.home-body h1{
+    padding: 2rem;
+    color: #d5773a;
+    font-size: 4rem;
+    text-decoration: underline;
+    letter-spacing: 2px;
+    font-weight: 3400;
+}
+
+.home-body{
+    text-align: center;
+    background-color: #fbe4b8;
+    color: #7a4235 ;
+}
+
+.home-main{
+    margin: auto;
+    position: relative;
+    max-width: fit-content;
+}
+
+.home-header{
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+    font-size: 1.2rem;
+    justify-content: space-between;
+}
+
+.home-search{
+    display: flex;
+}
+
+.home-search input{
+    width: 20rem;
+    background-color: inherit;
+}
+.search-field{
+    border: 3px solid #eeba81;
+    border-radius: 5px 0 0 5px;
+    font-size: 1.1rem;
+    color: inherit;
+}
+.search-field:focus{
+    border: 3px solid #ef8d50;
+    outline: none;
+    font-size: 1.5rem;
+}
+.search-field::placeholder{
+    padding-left: 1rem;
+    font-size: 1.1rem;
+}
+
+.button-search{
+    padding: 15px;
+    background-color: #ef8d50;
+    border-radius: 0 5px 5px 0px;
+    color: white;
+    font-size: 1.1rem;
+    border: 3px solid #eeba81;
+}
+
+.button-search:hover{
+    cursor: pointer;
+    background-color: inherit;
+    border: 3px solid #ef8d50;
+    color:#ef8d50;
+    font-weight: bolder;
+}
+
+.button-search:focus{
+    outline: none;
+}
+
+table,th,td{
+  background-color: blanchedalmond;
+  border: 2px solid #b38b60;
+  font-size: 1.5rem;
+  
+}
+th,td{
+    padding: 10px;
+}
+table{
+    margin: auto;
+}
+
+td{
+    padding: 10px;
+}
+
+.td-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.td-buttons button{
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    transform: scale(1.8);
+    background-color: inherit;
+}
+
+.td-buttons button:focus{
+    outline: none;
+    border: none
+}
+
+.td-buttons button:hover{
+    transform: scale(1.9);
+    color: #873c1c;
+}
+table .delete,.exit{
+    color: #e36236;
+}
+
+table .edit{
+    color: blue;
+}
+
+table .update{
+    color: green;
+}

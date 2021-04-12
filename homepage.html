@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+   
 </head>
 <body class="home-body">
     <div class="body-header">
@@ -22,10 +23,10 @@
         <nav>
             <ul>
                 <li>
-                    <button class="addStudent" data-title="Add Student">
+                    <button class="addStudent"  data-addbtn data-title="Add Student" onclick="openPopUp()">
                         <i class="fa fa-plus-circle"></i>
                     </button></li>
-                <li>Sign Out</li>
+                <li><i class="fa fa-sign-out-alt signout "></i></li>
                 <li>
                         <a href="https://github.com/meowchii19/prototype-of-student-records-" target="_blank">
                         <i class="fab fa-github"></i>
@@ -41,7 +42,8 @@
             <button class="button-search" type="submit" data-search-button>Search</button>
         </div>
         </div>
-           <table>
+           <table data-table>
+               <thead>
                <tr>
                     <th>No</th>
                     <th>Last Name</th>
@@ -51,83 +53,54 @@
                     <th>Year</th> 
                     <th>Actions</th>
                </tr>
-               <div class="content">
-                   <div class="cell">
-                        <tr>
-                            <td>1</td>
-                            <td>Carlo Fernando</td>
-                            <td>Regala</td>
-                            <td>20</td>
-                            <td>BSAET</td>
-                            <td>4th</td>
-                            <td>
-                                <div class="td-buttons">
-                                    <button class="edit">
-                                        <i class="fa fa-marker"></i>
-                                    </button>
-                                    <button class="delete">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                 </div>
-                             </td>
-                        </tr>
-                    </div>
-                    <tr>
-                        <td>2</td>
-                        <td>Carlo Fernando</td>
-                        <td>Regala</td>
-                        <td>20</td>
-                        <td>BSAET</td>
-                        <td>4th</td>
-                        <td>
-                            <div class="td-buttons">
-                                <button class="update">
-                                        <i class="fa fa-check-circle"></i>
-                                    </button>
-                                    <button class="exit">
-                                        <i class="fa fa-times-circle"></i>
-                                    </button>
-                                </div>
-                            </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Carlo Fernando</td>
-                        <td>Regala</td>
-                        <td>20</td>
-                        <td>BSAET</td>
-                        <td>4th</td>
-                         <td><button>Edit</button> <button>Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Carlo Fernando</td>
-                        <td>Regala</td>
-                        <td>20</td>
-                        <td>BSAET</td>
-                        <td>4th</td>
-                         <td><button>Edit</button> <button>Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Carlo Fernando</td>
-                        <td>Regala</td>
-                        <td>20</td>
-                        <td>BSAET</td>
-                        <td>4th</td>
-                         <td><button>Edit</button> <button>Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Carlo Fernando</td>
-                        <td>Regala</td>
-                        <td>20</td>
-                        <td>BSAET</td>
-                        <td>4th</td>
-                         <td><button>Edit</button> <button>Delete</button></td>
-                    </tr>
-            </div>
+            </thead>
+                <tbody class="tbody">
+                </tbody>
            </table>
     </main>
+    <div class="home-pop" data-pop> 
+        <form class="home-form">
+           
+                <button class="close-btn-home" data-close>
+                    <i class="fa fa-window-close"></i>
+                </button>
+      
+            <div class="pop-up-header" data-home>
+                <h2>Add Student </h2>
+            </div>
+            <div class="input-icons">
+                
+                <input class="input-field" data-lastname 
+                         type="text" 
+                         placeholder="Last Name">
+                </div>
+            <div class="input-icons">
+                  <input class="input-field" data-firstname
+                         type="text"
+                         placeholder="First Name">
+            </div>
+            <div class="input-icons">
+                <input class="input-field" data-age 
+                       type="text" 
+                       placeholder="Age">
+            </div>
+            <div class="input-icons">
+                <input class="input-field" data-course 
+                       type="text"
+                       placeholder="Course">
+            </div>
+            <div class="input-icons">
+                <input class="input-field" data-year 
+                       type="text"
+                       placeholder="Year">
+            </div>
+            <div class="home-submit">
+                <button type="submit" class="submit-button" data-submit>Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="overlay" data-overlay></div>   
+
+    <script defer src="./app.js"> </script>
 </body>
 </html>

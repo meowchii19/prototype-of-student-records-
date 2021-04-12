@@ -12,7 +12,7 @@ body{
     position: fixed;
     top: 53%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(1);
     transition: 200ms ease-in-out;
     background-color: #91a3bf;
     min-width: 500px;
@@ -22,7 +22,7 @@ body{
     z-index: 10;
 }
 
-.pop-up-form {
+.pop-up-form{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -175,7 +175,7 @@ body{
     font-size: 1rem;
     padding: 10px;
     position: absolute;
-    left: 58%;
+    left: 61%;
     z-index: 1;
 }
 .addStudent:hover::before{
@@ -264,11 +264,45 @@ table{
     margin: auto;
 }
 
+
 .td-buttons{
+    position: relative;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    background-color: blue;
+    align-items: center;
+
 }
+
+.btn{
+    position: absolute;
+}
+
+.primarybtn{
+    z-index: 10;
+}
+
+.primarybtn.notactive{
+    display: none;
+   
+}
+
+.secondarybtn{
+  display: none;
+}
+
+.secondarybtn.active{
+    display: flex;
+    z-index: 10;
+}
+
+.fa-marker,
+.fa-check-circle,
+.fa-times-circle,
+.fa-trash{
+    pointer-events: none;
+}
+
 
 .td-buttons button{
     padding: 10px;
@@ -297,4 +331,97 @@ table .edit{
 
 table .update{
     color: green;
+}
+
+
+
+.home-pop{
+    position: fixed;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    background-color: #fbe4b8;
+    min-width: 500px;
+    border: 3px solid;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    z-index: 10;
+}
+
+.home-pop.active{
+    transform:  translate(-50%, -50%) scale(1);
+}
+
+.home-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fbe4b8;
+}
+
+.home-submit{
+    width: 90%;
+    margin:  2rem auto 2rem auto;
+}
+
+.submit-button{ 
+    border: none;
+    border-radius: 30px;
+    width: 80%;
+    font-size: 1rem;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+.submit-button:hover{
+    cursor: pointer;
+    background-color:  white;
+    color: inherit;
+    border: 1px solid #ef8d50;
+
+}
+.submit-button:focus{
+    outline: none;
+
+}
+.close-btn-home{
+    margin-left: 30rem;
+    font-size: 2rem;
+    background-color: inherit;
+    border: none;
+}
+
+.close-btn-home i{
+    color: rgb(37, 36, 36);
+}
+
+.close-btn-home i:hover{
+    color: #ef8d50;
+}
+.close-btn-home:focus { 
+    outline: none;
+}
+.close-btn-home:hover{
+    cursor: pointer;
+}
+
+.overlay{
+    transition: 200ms ease-in-out;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, 0.5);
+    pointer-events: none;
+}
+
+.overlay.active{
+    opacity: 1;
+    pointer-events: all;
 }

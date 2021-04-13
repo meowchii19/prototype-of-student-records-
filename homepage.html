@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-   
+    <script defer src="./app.js"> </script>
 </head>
 <body class="home-body">
     <div class="body-header">
@@ -54,14 +54,67 @@
                     <th>Actions</th>
                </tr>
             </thead>
-                <tbody class="tbody">
-                </tbody>
+                <tbody class="tbody"></tbody>
            </table>
     </main>
-    <div class="home-pop" data-pop> 
-        <form class="home-form">
+   <!-- UPDATE FORM -->
+    <div class="home-pop" data-update> 
+        <form class="home-form" data-form>
            
                 <button class="close-btn-home" data-close>
+                    <i class="fa fa-window-close"></i>
+                </button>
+      
+            <div class="pop-up-header" data-home>
+                <h2>Update Information </h2>
+            </div>
+            <div class="input-icons">
+                
+                <input class="input-field" 
+                         type="text" 
+                         id="ln"
+                         placeholder="Last Name">
+                </div>
+            <div class="input-icons">
+                  <input class="input-field" 
+                         type="text"
+                         id="fn"
+                         placeholder="First Name">
+            </div>
+            <div class="input-icons">
+                <input class="input-field" 
+                       type="text" 
+                       id="age"
+                       placeholder="Age">
+            </div>
+            <div class="input-icons">
+                <input class="input-field"
+                       type="text"
+                       id="course"
+                       placeholder="Course">
+                       
+            </div>
+            <div class="input-icons">
+                <input class="input-field" 
+                       type="text"
+                       id="year"
+                       value="asdasd"
+                       placeholder="Year">
+
+            </div>
+            <div class="home-submit">
+                <button type="submit" class="submit-button" data-updatebtn>Update</button>
+            </div>
+        </form>
+    </div>
+    
+    
+<!-- ADD STUDENT -->
+
+    <div class="home-pop" data-pop> 
+        <form class="home-form" data-form-pop>
+           
+                <button class="close-btn-home" data-exit>
                     <i class="fa fa-window-close"></i>
                 </button>
       
@@ -99,8 +152,7 @@
             </div>
         </form>
     </div>
-    <div class="overlay" data-overlay></div>   
+    <div class="overlay" data-overlay></div>  
 
-    <script defer src="./app.js"> </script>
 </body>
 </html>

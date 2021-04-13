@@ -22,13 +22,18 @@ let studentLists = []
 const addStudentbtn = document.querySelector('[data-addbtn]')
 const popUp = document.querySelector('[data-pop]')
 const overLay = document.querySelector('[data-overlay]')
+const exitBtn = document.querySelector('[data-exit]')
 
+exitBtn.addEventListener('click', function(event){
+    event.preventDefault()
+    closePopUp()
+})
 addStudentbtn.addEventListener('click', openPopUp)
+
 
 window.addEventListener('keydown', (e) => {
     if(e.key === 'Escape') closePopUp();
 })
-
 function openPopUp(){
     form.reset()
     popUp.classList.add('active')
@@ -36,6 +41,7 @@ function openPopUp(){
 }
 
 function closePopUp() {
+    
     popUp.classList.remove('active')
     overLay.classList.remove('active')
 }
@@ -43,13 +49,17 @@ function closePopUp() {
 
 
 //UI Handlers
-const form = document.querySelector('.home-form')
-form.addEventListener('submit', addStudent)
+const submit = document.querySelector('[data-submit]')
+submit.addEventListener('click', addStudent)
+
+const form = document.querySelector('[data-form-pop]')
 
 function addToStudentLists(newStudent) {
     studentLists.push(newStudent);
     return true
 }
+
+
 
 
 function addStudent(e) {
@@ -64,13 +74,17 @@ function removeRow(el){
     return el.parentElement.parentElement.parentElement.remove()
 }
 
-const tbody = document.querySelector('.tbody')
+
 const CONTENT = document.querySelector('.content')
 
+
+//UPDATE AND CREATE
 function updateBooksGrid() {
+    console.log(studentLists)
     tbody.innerHTML = ''
     for (let student of studentLists){
         createList(student)
+
     }
 }
   
@@ -88,16 +102,18 @@ function getDataInputs(record){
 }
 
 
+let rIndx,tbody = document.querySelector('.tbody');
+
 function createList(e){
     
     const tr = document.createElement('tr')
     tr.setAttribute('id', 'myTr')
     tr.innerHTML = `<td>1</td>
-    <td>${e.lastName}</td>
-    <td>${e.firstName}</td>
-    <td>${e.age}</td>
-    <td>${e.course}</td>
-    <td>${e.year}</td>
+    <td id='lastname'>${e.lastName}</td>
+    <td id='firstname'>${e.firstName}</td>
+    <td id='age'>${e.age}</td>
+    <td id='course'>${e.course}</td>
+    <td id='year'>${e.year}</td>
     <td>
         <div class="td-buttons">
             <div class="btn primarybtn">
@@ -108,47 +124,43 @@ function createList(e){
                  <i class="fa fa-trash"></i>
              </button>
          </div>
-         <div class="btn secondarybtn">
-             <button id="update" class="update secondary" data-secondary1="">
-                 <i class="fa fa-check-circle"></i>
-             </button>
-             <button id="exit" class="exit secondary" data-secondary2="">
-                 <i class="fa fa-times-circle"></i>
-             </button>
-         </div>
          </div> 
 
      </td>`
     tbody.appendChild(tr)
+
+
 }
+
+
+
+
+
+
+
 
 //CHANGING THE ACTION BUTTONS
 const buttons = document.querySelectorAll('[data-table]')
 
 buttons.forEach(button => button.addEventListener('click', addClass))
 
-function addClass(e){
+{/* <button id="update" class="update secondary" data-secondary1="">
+      <i class="fa fa-check-circle"></i>
+  </button>
+  <button id="exit" class="exit secondary" data-secondary2="">
+      <i class="fa fa-times-circle"></i>
+  </button> */}
 
-    console.log(e.target)
+
+function addClass(e){
+    data(e)
     const pb = document.querySelector('.secondarybtn')
     let btn = e.target.classList
     let parentbtn = e.target.parentElement
     
     if (btn.contains('edit')){
-        parentbtn.innerHTML = ` <button id="update" class="update secondary" data-secondary1="">
-        <i class="fa fa-check-circle"></i>
-    </button>
-    <button id="exit" class="exit secondary" data-secondary2="">
-        <i class="fa fa-times-circle"></i>
-    </button>`
-    }
-    if(btn.contains('update') || btn.contains('exit')){
-        parentbtn.innerHTML = `<button id="edit" class="edit primary" data-primary1="">
-        <i class="fa fa-marker"></i>
-    </button>
-    <button id="delete" class="delete primary" data-primary2="">
-        <i class="fa fa-trash"></i>
-    </button>`
+       updatePopUp()
+       
     }
     if(btn.contains('delete')){
         removeRow(parentbtn)
@@ -157,7 +169,7 @@ function addClass(e){
 }
 
 
-//LOGGING OUT
+// //LOGGING OUT
 
 const signOutBtn = document.querySelector('.signout')
 
@@ -167,10 +179,34 @@ function signOut(){
   location.replace('./index.html')
 }
 
-const logInBtn = document.querySelector('[data-login]')
-loginbtn.addEventListener('click', logIn)
 
 
-function logIn(){
-    location.replace('./homepage.html')
+const closeBtn = document.querySelector('[data-close]')
+
+const updatePop = document.querySelector('[data-update]')
+
+closeBtn.addEventListener('click', function(event){
+    event.preventDefault()
+    closePop()
+})
+
+function updatePopUp(){
+    form.reset()
+    updatePop.classList.add('active')
+    overLay.classList.add('active')
 }
+
+function closePop() {
+
+    updatePop.classList.remove('active')
+    overLay.classList.remove('active')
+}
+
+const updateBtn = document.querySelector('[data-updatebtn]')
+
+updateBtn.addEventListener('click' , editRow)
+
+function editRow(e){
+    e.preventDefault()
+}
+

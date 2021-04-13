@@ -153,7 +153,6 @@ buttons.forEach(button => button.addEventListener('click', addClass))
 
 
 function addClass(e){
-    data(e)
     const pb = document.querySelector('.secondarybtn')
     let btn = e.target.classList
     let parentbtn = e.target.parentElement
@@ -203,10 +202,4 @@ function closePop() {
 }
 
 const updateBtn = document.querySelector('[data-updatebtn]')
-
-updateBtn.addEventListener('click' , editRow)
-
-function editRow(e){
-    e.preventDefault()
-}
 

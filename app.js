@@ -14,11 +14,60 @@ class Record {
     }
 }
 
-
 let studentLists = []
+
+
+$lastNameInput = document.querySelector('[data-lastname]')
+$firstNameInput = document.querySelector('[data-firstname]')
+$ageInput = document.querySelector('[data-age]')
+$courseInput = document.querySelector('[data-course]')
+$yearInput = document.querySelector('[data-year]')
+
+
+//ADDING RECORDS
+function addStudentToRecords(e) {
+    e.preventDefault()
+    let lastName = $lastNameInput.value
+    let firstName = $firstNameInput.value
+    let age = $ageInput.value
+    let course = $courseInput.value
+    let year = $yearInput.value
+    
+    let newRecord = new Record(lastName, firstName, age, course, year)
+    studentLists.push(newRecord)
+    updateBooksGrid()
+    closePopUp()
+}
+
+const populateStorage = () => {
+    localStorage.setItem('records', JSON.stringify(studentLists));
+}
+
+const getStorage = () => {
+    myLibrary = JSON.parse(localStorage.getItem('records'));
+}
+
+
+//UPDATE AND DELETE
+function updateBooksGrid() {
+    console.log(studentLists)
+    tbody.innerHTML = ''
+    for (let student of studentLists){
+        createList(student)
+
+    }
+}
+
+function deleteRecord(index){
+    console.log(studentLists)
+    studentLists.splice(index, 1)
+    console.log(studentLists)
+}
 
 //POP UP FORM
 
+const submit = document.querySelector('[data-submit]')
+submit.addEventListener('click', addStudentToRecords)
 const addStudentbtn = document.querySelector('[data-addbtn]')
 const popUp = document.querySelector('[data-pop]')
 const overLay = document.querySelector('[data-overlay]')
@@ -28,86 +77,50 @@ exitBtn.addEventListener('click', function(event){
     event.preventDefault()
     closePopUp()
 })
-addStudentbtn.addEventListener('click', openPopUp)
 
+addStudentbtn.addEventListener('click', openPopUp)
 
 window.addEventListener('keydown', (e) => {
     if(e.key === 'Escape') closePopUp();
 })
+
 function openPopUp(){
-    form.reset()
     popUp.classList.add('active')
     overLay.classList.add('active')
 }
 
 function closePopUp() {
-    
+    form.reset()
     popUp.classList.remove('active')
     overLay.classList.remove('active')
 }
 
-
-
-//UI Handlers
-const submit = document.querySelector('[data-submit]')
-submit.addEventListener('click', addStudent)
-
 const form = document.querySelector('[data-form-pop]')
 
-function addToStudentLists(newStudent) {
-    studentLists.push(newStudent);
-    return true
-}
 
 
-
-
-function addStudent(e) {
-    e.preventDefault()
-    addToStudentLists(getDataInputs())
-    updateBooksGrid()
-    closePopUp()
-}
 
 //REMOVING SELECTED ROW WHEN DELETED
-function removeRow(el){
+function removeRow(el,){
     return el.parentElement.parentElement.parentElement.remove()
+
 }
 
 
-const CONTENT = document.querySelector('.content')
 
-
-//UPDATE AND CREATE
-function updateBooksGrid() {
-    console.log(studentLists)
-    tbody.innerHTML = ''
-    for (let student of studentLists){
-        createList(student)
-
-    }
-}
-  
-
-//get data from inputs
-function getDataInputs(record){
-
-    const lastName = document.querySelector('[data-lastname]').value
-    const firstName = document.querySelector('[data-firstname]').value
-    const age = document.querySelector('[data-age]').value
-    const course = document.querySelector('[data-course]').value
-    const year = document.querySelector('[data-year]').value
-
-   return new Record(lastName, firstName, age, course, year)
-}
-
-
-let rIndx,tbody = document.querySelector('.tbody');
+let tbody = document.querySelector('.tbody');
+table = document.querySelector('[data-table]')
 
 function createList(e){
-    
+    let count = 0
+
+    for(let i=0; i<table.rows.length; i++){
+        count++
+    }
     const tr = document.createElement('tr')
     tr.setAttribute('id', 'myTr')
+    tr.setAttribute('id', `${count-1}`)
+    console.log(table.rows.length)
     tr.innerHTML = `<td>1</td>
     <td id='lastname'>${e.lastName}</td>
     <td id='firstname'>${e.firstName}</td>
@@ -128,7 +141,6 @@ function createList(e){
 
      </td>`
     tbody.appendChild(tr)
-
 
 }
 
@@ -158,16 +170,32 @@ function addClass(e){
     let parentbtn = e.target.parentElement
     
     if (btn.contains('edit')){
-       updatePopUp()
-       
+        let rowIndex = parentbtn.parentElement.parentElement.parentElement.id
+        editRecord(rowIndex)
     }
     if(btn.contains('delete')){
         removeRow(parentbtn)
     }
-
 }
 
 
+
+// const updateTable = () => {
+//     myLibrary.forEach((book, index) => {
+//       Object.keys(book).forEach(prop => {
+//         let $newTd = document.createElement('td');
+//         $newTd.textContent = book[prop];
+//         $row.appendChild($newTd);
+//       }); 
+  
+//       $row.appendChild(createReadSChtatusTd(book));
+//       $row.appendChild(createEditTd(book, index));
+//       $row.appendChild(createDeleteTd(index));
+//       $tbody.appendild($row);
+//     });
+  
+// }
+  
 // //LOGGING OUT
 
 const signOutBtn = document.querySelector('.signout')
@@ -179,27 +207,17 @@ function signOut(){
 }
 
 
-
-const closeBtn = document.querySelector('[data-close]')
-
-const updatePop = document.querySelector('[data-update]')
-
-closeBtn.addEventListener('click', function(event){
-    event.preventDefault()
-    closePop()
+function editRecord(e) {
+    
+    studentLists.forEach((record, index) => {
+        if(Number(e) === index) {
+            $lastNameInput.value = record.lastName,
+            $firstNameInput.value = record.firstName,
+            $ageInput.value =  record.age,
+            $courseInput.value = record.course,
+            $yearInput.value = record.year    
+        }
+    openPopUp()
 })
-
-function updatePopUp(){
-    form.reset()
-    updatePop.classList.add('active')
-    overLay.classList.add('active')
 }
-
-function closePop() {
-
-    updatePop.classList.remove('active')
-    overLay.classList.remove('active')
-}
-
-const updateBtn = document.querySelector('[data-updatebtn]')
 

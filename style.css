@@ -278,28 +278,14 @@ table{
     position: absolute;
 }
 
-.primarybtn{
-    z-index: 10;
-}
 
-.primarybtn.notactive{
-    display: none;
-   
-}
 
-.secondarybtn{
-  display: none;
-}
-
-.secondarybtn.active{
-    display: flex;
-    z-index: 10;
-}
 
 .fa-marker,
 .fa-check-circle,
 .fa-times-circle,
-.fa-trash{
+.fa-trash,
+.fa-window-close{
     pointer-events: none;
 }
 
@@ -366,6 +352,7 @@ table .update{
     width: 90%;
     margin:  2rem auto 2rem auto;
 }
+
 
 .submit-button{ 
     border: none;

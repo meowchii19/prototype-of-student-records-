@@ -38,7 +38,7 @@
         <div class="home-header">
             <h2>Student Lists</h2>
             <div class="home-search">
-            <input type="text" placeholder="Search" data-search-input class="search-field">
+            <input type="text" placeholder="Search Last Name" data-search-input class="search-field">
             <button class="button-search" type="submit" data-search-button>Search</button>
         </div>
         </div>
@@ -64,43 +64,48 @@
     <div class="home-pop" data-pop> 
         <form class="home-form" data-form-pop>
            
-                <button class="close-btn-home" data-exit>
+                <button class="close-btn-home exit" data-exit>
                     <i class="fa fa-window-close"></i>
                 </button>
       
             <div class="pop-up-header" data-home>
-                <h2>Add Student </h2>
+                <h2 class="h2">Add Student </h2>
             </div>
             <div class="input-icons">
                 
                 <input class="input-field" data-lastname 
                         value="" 
                         type="text" 
-                         placeholder="Last Name">
+                        required
+                        placeholder="Last Name">
 
                 </div>
             <div class="input-icons">
                   <input class="input-field" data-firstname
-                         type="text"
-                         placeholder="First Name">
+                        type="text"
+                        required
+                        placeholder="First Name">
             </div>
             <div class="input-icons">
                 <input class="input-field" data-age 
-                       type="text" 
+                       type="number" 
+                       required
                        placeholder="Age">
             </div>
             <div class="input-icons">
                 <input class="input-field" data-course 
                        type="text"
+                       required
                        placeholder="Course">
             </div>
             <div class="input-icons">
                 <input class="input-field" data-year 
                        type="text"
+                       required
                        placeholder="Year">
             </div>
             <div class="home-submit">
-                <button type="submit" class="submit-button" data-submit>Submit</button>
+                <button type="submit" class="submit-button submit" data-submit>Submit</button>
             </div>
         </form>
     </div>
